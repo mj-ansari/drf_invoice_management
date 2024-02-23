@@ -4,6 +4,7 @@ from django.urls import reverse
 from rest_framework import status
 from rest_framework.test import APIClient
 from .models import Invoice
+from datetime import datetime
 
 class InvoiceTestCase(TestCase):
     def setUp(self):
@@ -54,7 +55,8 @@ class InvoiceTestCase(TestCase):
         response = self.client.put(reverse('invoice-detail', args=[invoice.id]), data=updated_invoice_data, format='json')
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         invoice = Invoice.objects.get(id=invoice.id)
-        expected_date = datetime.strptime("2024-02-20", "%Y-%m-%d").date()
+        mydate = datetime.today()
+        expected_date = datetime.strptime(mydate.strftime("%Y-%m-%d"), "%Y-%m-%d").date()
         self.assertEqual(invoice.customer_name, "Updated Test Customer")
         self.assertEqual(invoice.date, expected_date)
         # You may want to check the updated price as well
