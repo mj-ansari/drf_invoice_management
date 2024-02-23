@@ -2,7 +2,7 @@ from django.db import models
 
 class Invoice(models.Model):
     customer_name = models.CharField(max_length=255)
-    date = models.DateField()
+    date = models.DateField(auto_now_add=True)
 
 class InvoiceDetail(models.Model):
     invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE, related_name='invoice_details')
