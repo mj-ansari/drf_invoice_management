@@ -16,6 +16,4 @@ python.exe .\manage.py migrate <br /><br />
 run django project using this command <br />
 python.exe .\manage.py runserver  <br /><br />
 
-you can check api endpoints here <br />
-http://127.0.0.1:8000/api/
 
